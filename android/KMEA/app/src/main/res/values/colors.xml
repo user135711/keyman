@@ -8,5 +8,9 @@
     <color name="key_preview_bg">#ff838383</color>
     <color name="key_preview_bg2">#ff333333</color>
     <color name="key_preview_border">#ff737373</color>
-    
+
+    <color name="keyman_orange">#FFFF7132</color>
+    <color name="keyman_red">#FFC82236</color>
+    <color name="keyman_blue">#FF4CB8D1</color>
+
 </resources>

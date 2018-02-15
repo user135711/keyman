@@ -39,8 +39,6 @@ import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
@@ -62,6 +60,8 @@ import android.os.ResultReceiver;
 import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
@@ -75,7 +75,7 @@ import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements OnKeyboardEventListener, OnKeyboardDownloadEventListener,
+public class MainActivity extends AppCompatActivity implements OnKeyboardEventListener, OnKeyboardDownloadEventListener,
   ActivityCompat.OnRequestPermissionsResultCallback {
 
   // Fields used for installing kmp packages
@@ -85,6 +85,8 @@ public class MainActivity extends Activity implements OnKeyboardEventListener, O
   private static final String TAG = "MainActivity";
   private FirebaseAnalytics mFirebaseAnalytics;
 
+  private Toolbar toolbar;
+  private Menu menu;
   private KMTextView textView;
   private final int minTextSize = 16;
   private final int maxTextSize = 72;
@@ -93,7 +95,6 @@ public class MainActivity extends Activity implements OnKeyboardEventListener, O
   private static final String userTextSizeKey = "UserTextSize";
   protected static final String dontShowGetStartedKey = "DontShowGetStarted";
   protected static final String didCheckUserDataKey = "DidCheckUserData";
-  private Menu menu;
   DownloadResultReceiver resultReceiver;
   private ProgressDialog progressDialog;
 
@@ -132,12 +133,13 @@ public class MainActivity extends Activity implements OnKeyboardEventListener, O
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     resultReceiver = new DownloadResultReceiver(new Handler());
-    final ActionBar actionBar = getActionBar();
-    actionBar.setLogo(R.drawable.keyman_logo);
-    actionBar.setDisplayShowTitleEnabled(false);
-    actionBar.setBackgroundDrawable(getActionBarDrawable(this));
 
     mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+    //final ActionBar actionBar = getActionBar();
+    //actionBar.setLogo(R.drawable.keyman_logo);
+    //actionBar.setDisplayShowTitleEnabled(false);
+    //actionBar.setBackgroundDrawable(getActionBarDrawable(this));
 
     if (BuildConfig.DEBUG) {
       KMManager.setDebugMode(true);
@@ -145,6 +147,13 @@ public class MainActivity extends Activity implements OnKeyboardEventListener, O
 
     KMManager.initialize(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_INAPP);
     setContentView(R.layout.activity_main);
+    toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+      toolbar.setBackground(getActionBarDrawable(this));
+    }
+
     textView = (KMTextView) findViewById(R.id.kmTextView);
     SharedPreferences prefs = getSharedPreferences(getString(R.string.kma_prefs_name), Context.MODE_PRIVATE);
     textView.setText(prefs.getString(userTextKey, ""));
@@ -352,7 +361,9 @@ public class MainActivity extends Activity implements OnKeyboardEventListener, O
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
-    getActionBar().setBackgroundDrawable(getActionBarDrawable(this));
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+      toolbar.setBackground(getActionBarDrawable(this));
+    }
     resizeTextView(textView.isKeyboardVisible());
     invalidateOptionsMenu();
   }
@@ -395,7 +406,7 @@ public class MainActivity extends Activity implements OnKeyboardEventListener, O
   public boolean onKeyUp(int keycode, KeyEvent e) {
     switch (keycode) {
       case KeyEvent.KEYCODE_MENU:
-        menu.performIdentifierAction(R.id.action_overflow, Menu.FLAG_PERFORM_NO_CLOSE);
+        //menu.performIdentifierAction(R.id.action_overflow, Menu.FLAG_PERFORM_NO_CLOSE);
         return true;
     }
 

@@ -36,6 +36,8 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,8 +51,9 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-public final class KeyboardPickerActivity extends Activity implements OnKeyboardDownloadEventListener {
+public final class KeyboardPickerActivity extends AppCompatActivity implements OnKeyboardDownloadEventListener {
 
+  private static Toolbar toolbar = null;
   private static ListView listView = null;
   private static KMKeyboardPickerAdapter listAdapter = null;
   private static ArrayList<HashMap<String, String>> keyboardsList = null;
@@ -79,16 +82,19 @@ public final class KeyboardPickerActivity extends Activity implements OnKeyboard
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     final Context context = this;
-    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+    /*requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
     try {
       int titleContainerId = (Integer) Class.forName("com.android.internal.R$id").getField("title_container").get(null);
       ((ViewGroup) getWindow().findViewById(titleContainerId)).removeAllViews();
     } catch (Exception e) {
       Log.e("KeyboardPickerActivity", "Error: " + e);
     }
-
-    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.list_title_layout2);
+    */
+    //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.list_title_layout2);
     setContentView(R.layout.list_layout);
+    toolbar = (Toolbar) findViewById(R.id.list_title_layout2);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
     listView = (ListView) findViewById(R.id.listView);
 
     File file = new File(context.getDir("userdata", Context.MODE_PRIVATE), KMManager.KMFilename_KeyboardsList);

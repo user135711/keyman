@@ -32,6 +32,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public final class LanguageListActivity extends Activity implements OnKeyboardDownloadEventListener {
+public final class LanguageListActivity extends AppCompatActivity implements OnKeyboardDownloadEventListener {
 
   private Context context;
   private static ListView listView = null;
