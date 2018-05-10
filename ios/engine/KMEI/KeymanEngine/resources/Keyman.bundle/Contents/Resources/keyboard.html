@@ -7,14 +7,34 @@
         <script type="text/javascript">
             
             console = new Object();
-            console.log = function(log) {
-                var iframe = document.createElement("IFRAME");
+            console.buffer = [];
+            console.delayTimer = 0;
+            console.flush = function() {
+              var log = "";
+              for(var i=0; i < console.buffer.length; i++) {
+                log += console.buffer[i] + '\n';
+              }
+            
+              var iframe = document.createElement("IFRAME");
                 iframe.setAttribute("src", "ios-log:#iOS#" + log);
                 document.documentElement.appendChild(iframe);
                 iframe.parentNode.removeChild(iframe);
                 iframe = null;
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage("ios-log:#iOS#" + log);
+                    
+              console.buffer = [];
+            };
+            console.log = function(log) {
+              console.buffer.push(log);
+              
+              if(console.delayTimer) {
+                window.clearTimeout(console.delayTimer);
+              }
+              
+              console.delayTimer = window.setTimeout(function() {
+                console.flush();
+              }, 2000);
             };
             console.debug = console.log;
             console.info = console.log;
@@ -84,6 +104,7 @@
             function insertText(dn, s) {
                 fragmentToggle = (fragmentToggle + 1) % 100;
                 window.location.hash = 'insertText-'+ fragmentToggle + '+dn=' + dn + '+s=' + toHex(s);
+                console.log("[Touch] " + window.location.hash);
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage(window.location.hash);
             }
