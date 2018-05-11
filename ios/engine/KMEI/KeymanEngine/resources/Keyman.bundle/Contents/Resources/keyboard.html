@@ -106,7 +106,7 @@
 
                 var insertHash = 'insertText-'+ fragmentToggle + '+dn=' + dn + '+s=' + toHex(s);
                 console.log("Output command: " + insertHash);
-                //window.location.hash = 'insertText-'+ fragmentToggle + '+dn=' + dn + '+s=' + toHex(s);
+                window.location.hash = 'insertText-'+ fragmentToggle + '+dn=' + dn + '+s=' + toHex(s);
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage('#' + insertHash);
             }
@@ -118,7 +118,7 @@
                 div.innerHTML = t;
                 var dt = div.firstChild.nodeValue;
                 var previewHash = 'showKeyPreview-'+fragmentToggle+'+x='+x+'+y='+y+'+w='+w+'+h='+h+'+t='+toHex(dt);
-                //window.location.hash = 'showKeyPreview-'+fragmentToggle+'+x='+x+'+y='+y+'+w='+w+'+h='+h+'+t='+toHex(dt);
+                window.location.hash = 'showKeyPreview-'+fragmentToggle+'+x='+x+'+y='+y+'+w='+w+'+h='+h+'+t='+toHex(dt);
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage('#' + previewHash);
             }
@@ -127,7 +127,7 @@
             {
                 fragmentToggle = (fragmentToggle + 1) % 100;
                 var dismissHash = 'dismissKeyPreview-'+fragmentToggle;
-                //window.location.hash = 'dismissKeyPreview-'+fragmentToggle;
+                window.location.hash = 'dismissKeyPreview-'+fragmentToggle;
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage('#' + dismissHash);
             }
@@ -151,7 +151,7 @@
                     if(shift) {
                         hash = hash + '+font=' + 'SpecialOSK';
                     }
-                    //window.location.hash = hash;
+                    window.location.hash = hash;
                     if (typeof(window.webkit) != 'undefined')
                         window.webkit.messageHandlers.keyman.postMessage('#' + hash);
                 }
@@ -160,7 +160,7 @@
             function menuKeyDown() {
                 fragmentToggle = (fragmentToggle + 1) % 100;
                 var keyDownHash = 'menuKeyDown-' + fragmentToggle;
-                //window.location.hash = 'menuKeyDown-' + fragmentToggle;
+                window.location.hash = 'menuKeyDown-' + fragmentToggle;
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage('#' + keyDownHash);
             }
@@ -169,7 +169,7 @@
             {
                 fragmentToggle = (fragmentToggle + 1) % 100;
                 var keyUpHash = 'menuKeyUp-'+fragmentToggle;
-                //window.location.hash = 'menuKeyUp-'+fragmentToggle;
+                window.location.hash = 'menuKeyUp-'+fragmentToggle;
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage('#' + keyUpHash);
             }
@@ -177,7 +177,7 @@
             function hideKeyboard() {
                 fragmentToggle = (fragmentToggle + 1) % 100;
                 var hideHash = 'hideKeyboard-' + fragmentToggle;
-                //window.location.hash = 'hideKeyboard-' + fragmentToggle;
+                window.location.hash = 'hideKeyboard-' + fragmentToggle;
                 if (typeof(window.webkit) != 'undefined')
                     window.webkit.messageHandlers.keyman.postMessage('#' + hideHash);
             }

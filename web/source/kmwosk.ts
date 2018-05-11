@@ -1037,6 +1037,8 @@ if(!window['keyman']['initialized']) {
     osk.clickKey = function(e) {
       var Lelem = keymanweb.domManager.getLastActiveElement(), Ls, Le, Lkc;
 
+      console.log("clickKey call-stack: \n" + (new Error().stack));
+
       var activeKeyboard = keymanweb.keyboardManager.activeKeyboard;
 
       console.log("[Touch] Clicked key: " + e.id);
