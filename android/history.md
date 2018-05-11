@@ -1,5 +1,11 @@
 # Keyman for Android
 
+## 2018-05-11 10.0.392 beta
+* Fix globe button when exiting in-app browser (#231)
+
+## 2018-05-11 10.0.391 beta
+* Update compile and target Android SDK version to 27 (#750)
+
 ## 2018-05-08 10.0.386 beta
 * Fix crashes from invalid package name/version (#819)
 * Clean up console log (#748)
