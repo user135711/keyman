@@ -2548,9 +2548,9 @@ if(!window['keyman']['initialized']) {
       osk.popupBaseKey = null;
     }
 
-    osk.getTouchKey = function(e, save) {
+    osk.getTouchKey = function(e: TouchEvent, save) {
       // Identify the key touched
-      var t = e.changedTouches[0].target, key = osk.keyTarget(t);
+      var t = e.changedTouches[0].target as HTMLElement, key = osk.keyTarget(t);
 
       // Save the touch point
       var touchX = e.changedTouches[0].pageX;
@@ -2573,10 +2573,20 @@ if(!window['keyman']['initialized']) {
         osk.touchCount = e.touches.length;
       }
 
+      var oldKey = key;
+
       // Get nearest key if touching a hidden key or the end of a key row
       if((key && (key.className.indexOf('key-hidden') >= 0))
         || t.className.indexOf('kmw-key-row') >= 0) {
         key = osk.findNearestKey(e,t);
+
+        if(key == null && oldKey) {
+          console.log("regarding next log entry:  dropped the valid key '" + oldKey.id + "'");
+        }
+      }
+
+      if(key == null && !oldKey) {
+        console.log("regarding next log entry:  raw touch target: { tag: '" + t.tagName + ", class: '" + t.className + "', id: '" + t.id + "'}");
       }
 
       return key;
@@ -2592,11 +2602,12 @@ if(!window['keyman']['initialized']) {
     {
       var key = osk.getTouchKey(e, true);
 
-      console.log("[Touch] start:  key = '" + key.id + "'");
-
       // Do not do anything if no key identified!
       if(key == null) {
+        console.log("[Touch] start:  key is missing!");
         return;
+      } else {
+        console.log("[Touch] start:  key = '" + key.id + "'");
       }
 
       // Get key name (K_...) from element ID
@@ -2646,7 +2657,12 @@ if(!window['keyman']['initialized']) {
     osk.release = function(e)
     {
       var key = osk.getTouchKey(e, false);
-      console.log("[Touch] end:  key = '" + key.id + "'");
+
+      if(key == null) {
+        console.log("[Touch] end:  key is missing!");
+      } else {
+        console.log("[Touch] end:  key = '" + key.id + "'");
+      }
 
       // Prevent incorrect multi-touch behaviour if native or device popup visible
       var sk = document.getElementById('kmw-popup-keys'), t = osk.currentTarget;
@@ -2880,14 +2896,20 @@ if(!window['keyman']['initialized']) {
     osk.findNearestKey = function(e,t)
     {
       if((!e) || (typeof e.changedTouches == 'undefined')
-        || (e.changedTouches.length == 0)) return null;
+        || (e.changedTouches.length == 0)) {
+          console.log("Parameter object missing 'changedTouches' information!");
+          return null;
+      }
 
       // Get touch point on screen
       var x = e.changedTouches[0].pageX;
 
       // Get key-row beneath touch point
       while(t && t.className.indexOf('key-row') < 0) t = t.parentNode;
-      if(!t) return null;
+      if(!t) {
+        console.log("Ran out of parent elements trying to find the 'key-row'!");
+        return null;
+      }
 
       // Find minimum distance from any key
       var k, k0=0, dx, dxMax=24, dxMin=100000, x1, x2;
@@ -2907,6 +2929,9 @@ if(!window['keyman']['initialized']) {
           k0 = k; dxMin = dx;
         }
       }
+
+      console.log("closest key: " + t.childNodes[k0].firstChild.id || t.childNodes[k0].firstChild.firstChild.id);
+
       if(dxMin < 100000)
       {
         t = t.childNodes[k0].firstChild;
@@ -2919,6 +2944,8 @@ if(!window['keyman']['initialized']) {
             ((x - x2) >= 0 && (x - x2) < dxMax))
           return t;
       }
+
+      console.log("not close enough.");
       return null;
     }
 
