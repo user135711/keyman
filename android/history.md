@@ -1,10 +1,43 @@
 # Keyman for Android
 
+
 ## 11.0 alpha
 * Move to 11.0
 
+## 2018-07-06 10.0.502 stable
+* Fixes issue for embedded Android, iOS apps where a keyboard with varying row counts in different layers could crash (#1055)
+
+## 2018-06-28 10.0.500 stable
+* 10.0 stable release
+
+## 2018-06-27 10.0.405 beta
+* Fixes issue where next layer was not correctly selected when the first longpress key pressed (#1027)
+* Fixes issue where a quote character in some contexts could cause the keyboard to fail (#1028)
+
+## 2018-06-26 10.0.404 beta
+* Add documentation for version 10.0 (#1023)
+
+## 2018-06-21 10.0.403 beta
+* Fixes an issue where opening a menu could cause the keyboard to unload (#1014)
+
+## 2018-06-20 10.0.402 beta
+* Support script subtags for keyboard languages supplied from cloud (#1012)
+
+## 2018-06-15 10.0.401 beta
+* No changes to Keyman for Android
+
+## 2018-06-13 10.0.400 beta
+* No changes to Keyman for Android
+
+## 2018-06-11 10.0.399 beta
+* Consolidate Info view (#972)
+* Platform tests (in keyboards) are now consistent across all platforms (#969)
+ 
+## 2018-06-05 10.0.398 beta
+* Fix globe button for system keyboard (#942)
+
 ## 2018-05-27 10.0.397 beta
-* Improve intent-filter for *.kmp extensions (902)
+* Improve intent-filter for *.kmp extensions (#902)
 
 ## 2018-05-22 10.0.396 beta
 * No changes to Keyman for Android.
@@ -19,7 +52,7 @@
 * No changes to Keyman for Android.
 
 ## 2018-05-11 10.0.392 beta
-* Fix globe button when exiting in-app browser (#231)
+* Fix globe button when exiting in-app browser (#848)
 
 ## 2018-05-11 10.0.391 beta
 * Update compile and target Android SDK version to 27 (#750)

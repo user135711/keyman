@@ -13,6 +13,8 @@
 
 CGFloat lw = 1.0;
 CGFloat r = 7.0;
+const NSTimeInterval delayBeforeRepeating = 0.5f;
+const NSTimeInterval repeatInterval = 0.05f;
 
 @interface KeyView ()
 @property (nonatomic, assign) NSUInteger keyCode;
@@ -207,43 +209,71 @@ CGFloat r = 7.0;
 }
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    if (!self.isModifierKey)
-        [self setKeyPressed:YES];
-    [self timerAction:nil];
-    if (!self.isModifierKey)
-        [self startTimerWithTimeInterval:0.5f];
+    @synchronized(self.target) {
+        if (!self.isModifierKey) {
+            // All KeyViews are about to get blown away and recreated, so we don't want the timer to fire
+            // again until some other key gets pressed.
+            [self stopTimer];
+        }
+        else {
+            [self setKeyPressed:YES];
+        }
+        [self processKeyClick];
+        if (!self.isModifierKey)
+            [self startTimerWithTimeInterval:delayBeforeRepeating];
+    }
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {
-    if (!self.isModifierKey)
+    if (!self.isModifierKey) {
         [self setKeyPressed:NO];
-    [self stopTimer];
+        [self stopTimer];
+    }
+}
+
+-(void)processKeyClick {
+    [self.target keyAction:self];
 }
 
 - (void)startTimerWithTimeInterval:(NSTimeInterval)interval {
-    if (_keyEventTimer == nil) {
-        TimerTarget *timerTarget = [[TimerTarget alloc] init];
-        timerTarget.target = self;
-        _keyEventTimer = [NSTimer scheduledTimerWithTimeInterval:interval
-                                                          target:timerTarget
-                                                        selector:@selector(timerAction:)
-                                                        userInfo:nil
-                                                         repeats:YES];
+    @synchronized(self.target) {
+        if (_keyEventTimer == nil) {
+            // The TimerTarget class and the following two lines allow the timer to hold a *weak*
+            // reference to this KeyView object, so it can be disposed even if there is a timer waiting
+            // to fire that refers to it.
+            TimerTarget *timerTarget = [[TimerTarget alloc] init];
+            timerTarget.target = self;
+            _keyEventTimer = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                              target:timerTarget
+                                                            selector:@selector(timerAction:)
+                                                            userInfo:nil
+                                                             repeats:YES];
+        }
     }
 }
 
 - (void)stopTimer {
-    if (_keyEventTimer != nil) {
-        [_keyEventTimer invalidate];
-        _keyEventTimer = nil;
+    @synchronized(self.target) {
+        //NSLog(@"KeyView TIMER - stopping");
+        if (_keyEventTimer != nil) {
+            [_keyEventTimer invalidate];
+            _keyEventTimer = nil;
+        }
     }
 }
 
 - (void)timerAction:(NSTimer *)timer {
-    ((void (*)(id, SEL))[self.target methodForSelector:self.action])(self.target, self.action);
-    if ([_keyEventTimer timeInterval] == 0.5f) {
-        [self stopTimer];
-        [self startTimerWithTimeInterval:0.05f];
+    @synchronized(self.target) {
+        //NSLog(@"KeyView TIMER - Fired for key %lu", [self keyCode]);
+        [self processKeyClick];
+        
+        if ([timer timeInterval] == delayBeforeRepeating) {
+            // Fired following a normal (non-modifier key press). As long as user continues to hold
+            // down that key, it will now begin to repeat every 0.05 seconds. All we really want to
+            // do is change the time interval, but NSTimer doesn't support that.
+            [self stopTimer];
+            [self startTimerWithTimeInterval:repeatInterval];
+        }
     }
 }
 
