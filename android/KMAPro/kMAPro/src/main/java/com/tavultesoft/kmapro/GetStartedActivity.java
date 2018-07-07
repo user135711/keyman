@@ -13,8 +13,6 @@ import com.tavultesoft.kmea.KMManager;
 
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +25,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,7 +43,7 @@ public class GetStartedActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     final Context context = this;
-    /*
+
     requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
     try {
       int titleContainerId = (Integer) Class.forName("com.android.internal.R$id").getField("title_container").get(null);
@@ -53,14 +52,14 @@ public class GetStartedActivity extends AppCompatActivity {
       Log.e("GetStartedActivity", e.getMessage());
     }
 
-    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.get_started_toolbar);
-    */
+    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.get_started_title_layout);
 
     setContentView(R.layout.get_started_list_layout);
+    /*
     Toolbar toolbar = (Toolbar) findViewById(R.id.get_started_toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setTitle(null);
-
+    */
     listView = (ListView) findViewById(R.id.listView);
 
     final ImageButton closeButton = (ImageButton) findViewById(R.id.close_button);

@@ -39,7 +39,9 @@ import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -60,7 +62,6 @@ import android.os.ResultReceiver;
 import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
   private static final String TAG = "MainActivity";
   private FirebaseAnalytics mFirebaseAnalytics;
 
-  private Toolbar toolbar;
+  //private Toolbar toolbar;
   private Menu menu;
   private KMTextView textView;
   private final int minTextSize = 16;
@@ -133,13 +134,12 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     resultReceiver = new DownloadResultReceiver(new Handler());
+    final ActionBar actionBar = getSupportActionBar();
+    actionBar.setLogo(R.drawable.keyman_logo);
+    actionBar.setDisplayShowTitleEnabled(false);
+    actionBar.setBackgroundDrawable(getActionBarDrawable(this));
 
     mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
-    //final ActionBar actionBar = getActionBar();
-    //actionBar.setLogo(R.drawable.keyman_logo);
-    //actionBar.setDisplayShowTitleEnabled(false);
-    //actionBar.setBackgroundDrawable(getActionBarDrawable(this));
 
     if (BuildConfig.DEBUG) {
       KMManager.setDebugMode(true);
@@ -147,13 +147,14 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
 
     KMManager.initialize(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_INAPP);
     setContentView(R.layout.activity_main);
+    /*
     toolbar = (Toolbar) findViewById(R.id.main_toolbar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setTitle(null);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
       toolbar.setBackground(getActionBarDrawable(this));
     }
-
+    */
     textView = (KMTextView) findViewById(R.id.kmTextView);
     SharedPreferences prefs = getSharedPreferences(getString(R.string.kma_prefs_name), Context.MODE_PRIVATE);
     textView.setText(prefs.getString(userTextKey, ""));
@@ -361,9 +362,7 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
   @Override
   public void onConfigurationChanged(Configuration newConfig) {
     super.onConfigurationChanged(newConfig);
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-      toolbar.setBackground(getActionBarDrawable(this));
-    }
+    getSupportActionBar().setBackgroundDrawable(getActionBarDrawable(this));
     resizeTextView(textView.isKeyboardVisible());
     invalidateOptionsMenu();
   }

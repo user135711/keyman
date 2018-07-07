@@ -32,14 +32,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 
-public class BookmarksActivity extends Activity {
+public class BookmarksActivity extends AppCompatActivity {
 
   private static ListView listView;
   private static ArrayList<HashMap<String, String>> list = null;
@@ -57,7 +57,7 @@ public class BookmarksActivity extends Activity {
     final Context context = this;
     final String title = getIntent().getStringExtra(titleKey);
     final String url = getIntent().getStringExtra(urlKey);
-    final ActionBar actionBar = getActionBar();
+    final ActionBar actionBar = getSupportActionBar();
     actionBar.setLogo(null);
     actionBar.setDisplayShowHomeEnabled(false);
     actionBar.setDisplayShowTitleEnabled(false);

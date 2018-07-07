@@ -20,12 +20,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 
-public class InfoActivity extends Activity {
+public class InfoActivity extends AppCompatActivity {
 
   private WebView webView;
   private final String kmBaseUrl = "https://keyman.com/android/app/";
@@ -39,7 +39,7 @@ public class InfoActivity extends Activity {
     final Context context = this;
 
 
-    final ActionBar actionBar = getActionBar();
+    final ActionBar actionBar = getSupportActionBar();
     actionBar.setLogo(R.drawable.keyman_logo);
     actionBar.setDisplayShowTitleEnabled(false);
     actionBar.setDisplayShowCustomEnabled(true);

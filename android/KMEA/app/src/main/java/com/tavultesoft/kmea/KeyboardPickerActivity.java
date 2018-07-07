@@ -24,8 +24,8 @@ import com.tavultesoft.kmea.KeyboardEventHandler.OnKeyboardDownloadEventListener
 import com.tavultesoft.kmea.util.FileUtils;
 import com.tavultesoft.kmea.BuildConfig;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -36,7 +36,6 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -82,21 +81,22 @@ public final class KeyboardPickerActivity extends AppCompatActivity implements O
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     final Context context = this;
-    /*requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
     try {
       int titleContainerId = (Integer) Class.forName("com.android.internal.R$id").getField("title_container").get(null);
       ((ViewGroup) getWindow().findViewById(titleContainerId)).removeAllViews();
     } catch (Exception e) {
       Log.e("KeyboardPickerActivity", "Error: " + e);
     }
-    */
-    //getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.list_title_layout2);
+
+    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.list_title_layout2);
     setContentView(R.layout.list_layout);
+    /*
     toolbar = (Toolbar) findViewById(R.id.list_title_layout2);
     setSupportActionBar(toolbar);
     getSupportActionBar().setTitle(null);
+    */
     listView = (ListView) findViewById(R.id.listView);
-
     File file = new File(context.getDir("userdata", Context.MODE_PRIVATE), KMManager.KMFilename_KeyboardsList);
     if (file.exists()) {
       keyboardsList = getKeyboardsList(context);
@@ -545,7 +545,7 @@ public final class KeyboardPickerActivity extends AppCompatActivity implements O
           progressDialog = new ProgressDialog(context);
           progressDialog.setMessage("Checking keyboard updates...");
           progressDialog.setCancelable(false);
-          if (!((Activity) context).isFinishing()) {
+          if (!((AppCompatActivity) context).isFinishing()) {
             progressDialog.show();
           } else {
             cancel(true);
@@ -672,7 +672,7 @@ public final class KeyboardPickerActivity extends AppCompatActivity implements O
           });
 
           AlertDialog dialog = dialogBuilder.create();
-          if (!((Activity) context).isFinishing()) {
+          if (!((AppCompatActivity) context).isFinishing()) {
             dialog.setOnCancelListener(new OnCancelListener() {
               @Override
               public void onCancel(DialogInterface dialog) {

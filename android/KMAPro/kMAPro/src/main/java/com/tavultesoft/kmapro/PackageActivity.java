@@ -1,9 +1,9 @@
 package com.tavultesoft.kmapro;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PackageActivity extends Activity {
+public class PackageActivity extends AppCompatActivity {
 
   private WebView webView;
   private AlertDialog alertDialog;
@@ -62,7 +62,7 @@ public class PackageActivity extends Activity {
       showErrorDialog(context, pkgId, message);
     }
 
-    final ActionBar actionBar = getActionBar();
+    final ActionBar actionBar = getSupportActionBar();
     actionBar.setLogo(R.drawable.keyman_logo);
     actionBar.setDisplayShowHomeEnabled(false);
     actionBar.setDisplayShowTitleEnabled(false);

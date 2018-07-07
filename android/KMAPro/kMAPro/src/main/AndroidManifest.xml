@@ -191,6 +191,7 @@
             android:theme="@style/Theme.AppCompat.Light.Dialog" >
         </activity>
 
+        <!-- temporarily disable crashlytics. do not merge to master -->
         <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false" />
 
         <provider

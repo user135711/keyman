@@ -26,13 +26,12 @@ import com.tavultesoft.kmea.KeyboardEventHandler.OnKeyboardDownloadEventListener
 import com.tavultesoft.kmea.BuildConfig;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -337,7 +336,7 @@ public final class LanguageListActivity extends AppCompatActivity implements OnK
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
-        if (!((Activity) context).isFinishing()) {
+        if (!((AppCompatActivity) context).isFinishing()) {
           progressDialog.show();
         } else {
           cancel(true);

@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -30,7 +30,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 // Public access is necessary to avoid IllegalAccessException
-public final class KeyboardInfoActivity extends Activity {
+public final class KeyboardInfoActivity extends AppCompatActivity {
 
   private static ListView listView = null;
   private static ArrayList<HashMap<String, String>> infoList = null;

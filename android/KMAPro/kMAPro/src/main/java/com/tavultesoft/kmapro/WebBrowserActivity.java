@@ -38,10 +38,10 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.app.ActionBar;
-import android.app.Activity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 
-public class WebBrowserActivity extends Activity {
+public class WebBrowserActivity extends AppCompatActivity {
 
   private WebView webView;
   private EditText addressField;
@@ -60,7 +60,7 @@ public class WebBrowserActivity extends Activity {
     super.onCreate(savedInstanceState);
 
     final Context context = this;
-    final ActionBar actionBar = getActionBar();
+    final ActionBar actionBar = getSupportActionBar();
     actionBar.setLogo(null);
     actionBar.setDisplayShowHomeEnabled(false);
     actionBar.setDisplayShowTitleEnabled(false);

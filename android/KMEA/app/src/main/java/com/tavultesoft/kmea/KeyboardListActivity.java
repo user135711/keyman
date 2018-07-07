@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 import com.tavultesoft.kmea.KeyboardEventHandler.OnKeyboardDownloadEventListener;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 // Public access is necessary to avoid IllegalAccessException
-public final class KeyboardListActivity extends Activity implements OnKeyboardDownloadEventListener {
+public final class KeyboardListActivity extends AppCompatActivity implements OnKeyboardDownloadEventListener {
 
   private static ListView listView = null;
   private static JSONArray languages = LanguageListActivity.languages();
