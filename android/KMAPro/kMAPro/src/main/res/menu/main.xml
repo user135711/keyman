@@ -25,9 +25,10 @@
 
     <!-- Set showAsAction="never" for overflow -->
     <item
-        android:id="@+id/empty"
-        android:icon="@drawable/ic_light_action_overflow"
-        app:showAsAction="always">
+        android:id="@+id/action_overflow"
+        app:showAsAction="always"
+        android:title="@string/action_overflow"
+        android:icon="@drawable/ic_light_action_overflow" >
 
         <menu>
             <item

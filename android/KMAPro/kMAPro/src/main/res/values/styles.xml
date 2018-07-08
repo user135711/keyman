@@ -3,12 +3,12 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize the theme here -->
+        <item name="colorPrimary">@color/keyman_blue</item>
         <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <!--item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item-->
-        <!--item name="android:windowNoTitle">true</item-->
+        <item name="android:windowNoTitle">false</item>
+
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
