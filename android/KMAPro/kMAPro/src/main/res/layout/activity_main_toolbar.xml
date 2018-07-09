@@ -6,13 +6,14 @@
     app:theme="@style/ThemeOverlay.AppCompat"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@android:color/white">
+    android:background="@color/keyman_blue">
 
         <ImageView
             android:id="@+id/keyman_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@null"
+            android:layout_gravity="left"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/keyman_logo"/>
 
 </android.support.v7.widget.Toolbar>

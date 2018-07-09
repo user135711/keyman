@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/get_started_toolbar"
-    app:theme="@style/ThemeOverlay.AppCompat"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize">
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/keyman_blue"
+    android:theme="@style/ThemeOverlay.AppCompat">
 
     <ImageView
         style="?android:attr/actionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
         android:layout_centerVertical="true"
+        android:layout_gravity="left"
         android:contentDescription="@string/image_view"
         android:src="@drawable/ic_action_get_started" />
-        
+
     <TextView
         android:id="@+id/menu_title"
         android:layout_width="wrap_content"
@@ -31,8 +31,8 @@
         style="?android:attr/actionButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
         android:layout_centerVertical="true"
+        android:layout_gravity="right"
         android:contentDescription="@string/image_button"
         android:src="@android:drawable/ic_menu_close_clear_cancel" />
 

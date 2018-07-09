@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="yellow">#FFFF00</color>
     <color name="yellow_background">#FFFFFFCF</color>
     <color name="keyman_orange">#FFFF7132</color>
     <color name="keyman_red">#FFC82236</color>

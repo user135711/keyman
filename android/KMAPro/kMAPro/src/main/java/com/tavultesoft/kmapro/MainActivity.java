@@ -135,9 +135,11 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
     super.onCreate(savedInstanceState);
     resultReceiver = new DownloadResultReceiver(new Handler());
     final ActionBar actionBar = getSupportActionBar();
+    actionBar.setDisplayUseLogoEnabled(true);
+    actionBar.setDisplayShowHomeEnabled(true);
     actionBar.setLogo(R.drawable.keyman_logo);
     actionBar.setDisplayShowTitleEnabled(false);
-    actionBar.setBackgroundDrawable(getActionBarDrawable(this));
+    //actionBar.setBackgroundDrawable(getActionBarDrawable(this));
 
     mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 

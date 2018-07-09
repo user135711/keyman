@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow_background"
-    tools:context=".MainActivity" >
+    android:background="@color/yellow">
 
-    <!--include layout="@layout/activity_main_toolbar" /-->
+    <!--include layout="@layout/activity_main_toolbar" / -->
 
     <com.tavultesoft.kmea.KMTextView
         android:id="@+id/kmTextView"
