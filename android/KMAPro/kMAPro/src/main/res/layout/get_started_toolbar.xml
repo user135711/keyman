@@ -6,6 +6,7 @@
     android:layout_height="?attr/actionBarSize"
     android:background="@color/keyman_blue"
     android:theme="@style/ThemeOverlay.AppCompat">
+<!-- This needs to be    android:background="?attr/colorPrimary" -->
 
     <ImageView
         style="?android:attr/actionButtonStyle"

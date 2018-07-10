@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
   private static final String TAG = "MainActivity";
   private FirebaseAnalytics mFirebaseAnalytics;
 
-  //private Toolbar toolbar;
+  private Toolbar toolbar;
   private Menu menu;
   private KMTextView textView;
   private final int minTextSize = 16;
@@ -134,6 +134,12 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     resultReceiver = new DownloadResultReceiver(new Handler());
+    /*
+    toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
+    */
+
     final ActionBar actionBar = getSupportActionBar();
     actionBar.setDisplayUseLogoEnabled(true);
     actionBar.setDisplayShowHomeEnabled(true);
@@ -149,10 +155,8 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
 
     KMManager.initialize(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_INAPP);
     setContentView(R.layout.activity_main);
+
     /*
-    toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(null);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
       toolbar.setBackground(getActionBarDrawable(this));
     }

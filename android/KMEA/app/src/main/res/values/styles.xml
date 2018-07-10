@@ -6,10 +6,10 @@
     <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize the theme here -->
         <!-- colorPrimary is used for the default action bar background -->
-        <item name="colorPrimary">@color/keyman_blue</item>
+        <!--item name="colorPrimary">@color/keyman_blue</item-->
 
         <!-- colorPrimaryDark is used for the status bar -->
-        <item name="colorPrimaryDark">@color/keyman_orange</item>
+        <!--item name="colorPrimaryDark">@color/keyman_orange</item-->
 
 
         <!--

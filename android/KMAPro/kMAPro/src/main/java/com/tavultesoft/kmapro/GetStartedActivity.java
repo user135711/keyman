@@ -43,6 +43,7 @@ public class GetStartedActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
     final Context context = this;
     /*
     requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
@@ -58,8 +59,8 @@ public class GetStartedActivity extends AppCompatActivity {
     setContentView(R.layout.get_started_list_layout);
 
     Toolbar toolbar = (Toolbar) findViewById(R.id.get_started_toolbar);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(null);
+    //setSupportActionBar(toolbar);
+    //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     listView = (ListView) findViewById(R.id.listView);
 

@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/keyman_blue">
+<!-- needs to be android:background="?attr/colorPrimary"-->
 
         <ImageView
             android:id="@+id/keyman_logo"
