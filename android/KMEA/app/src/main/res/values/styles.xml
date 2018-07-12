@@ -1,9 +1,9 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme -->
-    <style name="AppTheme" parent="AppTheme.Base" />
+    <style name="KMEAAppTheme" parent="KMEAAppTheme.Base" />
 
-    <style name="AppTheme.Base" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="KMEAAppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize the theme here -->
         <!-- colorPrimary is used for the default action bar background -->
         <!--item name="colorPrimary">@color/keyman_blue</item-->

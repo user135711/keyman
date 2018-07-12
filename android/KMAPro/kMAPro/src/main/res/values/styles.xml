@@ -3,7 +3,7 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="BaseAppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize the theme here -->
         <!-- colorPrimary is used for the default action bar background -->
         <item name="colorPrimary">@color/keyman_blue</item>
@@ -19,11 +19,4 @@
             backward-compatibility can go here.
         -->
     </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="BaseAppTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-
-    </style>
-
 </resources>

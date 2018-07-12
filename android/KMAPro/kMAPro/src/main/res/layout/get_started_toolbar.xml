@@ -4,8 +4,8 @@
     android:id="@+id/get_started_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/keyman_blue"
-    android:theme="@style/ThemeOverlay.AppCompat">
+    android:background="@color/keyman_blue">
+<!--    android:theme="@style/ThemeOverlay.AppCompat"-->
 <!-- This needs to be    android:background="?attr/colorPrimary" -->
 
     <ImageView

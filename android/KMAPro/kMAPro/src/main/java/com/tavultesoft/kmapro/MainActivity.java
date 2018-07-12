@@ -40,7 +40,6 @@ import android.os.Parcelable;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
@@ -134,18 +133,15 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     resultReceiver = new DownloadResultReceiver(new Handler());
-    /*
-    toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(null);
-    */
 
+/*
     final ActionBar actionBar = getSupportActionBar();
     actionBar.setDisplayUseLogoEnabled(true);
     actionBar.setDisplayShowHomeEnabled(true);
     actionBar.setLogo(R.drawable.keyman_logo);
     actionBar.setDisplayShowTitleEnabled(false);
     //actionBar.setBackgroundDrawable(getActionBarDrawable(this));
+    */
 
     mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
@@ -155,6 +151,15 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
 
     KMManager.initialize(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_INAPP);
     setContentView(R.layout.activity_main);
+
+    toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
+    getSupportActionBar().setDisplayUseLogoEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
+    getSupportActionBar().setLogo(R.drawable.keyman_logo);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
     /*
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

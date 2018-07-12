@@ -1,6 +1,7 @@
 package com.keyman.kmsample1;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.TextInputLayout;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,8 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends Activity implements OnKeyboardEventListener, OnKeyboardDownloadEventListener {
+public class MainActivity extends AppCompatActivity implements OnKeyboardEventListener, OnKeyboardDownloadEventListener {
 
+  private TextInputLayout inputLayout;
   private KMTextView textView;
 
   @Override

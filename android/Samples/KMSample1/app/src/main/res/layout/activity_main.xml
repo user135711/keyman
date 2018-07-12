@@ -2,19 +2,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
     tools:context=".MainActivity">
 
-    <com.tavultesoft.kmea.KMTextView
-        android:id="@+id/kmTextView"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/kmInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:gravity="top"
-        android:scrollbars="vertical" >
+        android:layout_height="wrap_content">
 
-        <requestFocus />
-    </com.tavultesoft.kmea.KMTextView>
+        <com.tavultesoft.kmea.KMTextView
+            android:id="@+id/kmTextView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:scrollbars="vertical" >
 
+            <requestFocus />
+        </com.tavultesoft.kmea.KMTextView>
+    </android.support.design.widget.TextInputLayout>
 </RelativeLayout>

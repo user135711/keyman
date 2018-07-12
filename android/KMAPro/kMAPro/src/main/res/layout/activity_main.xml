@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/keyman_blue"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:theme="@style/AppTheme"
     tools:context=".MainActivity">
 <!-- this needs to be android:background="?attr/colorPrimary" -->
 
-    <!--include layout="@layout/activity_main_toolbar" / -->
+    <include layout="@layout/activity_main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <com.tavultesoft.kmea.KMTextView
         android:id="@+id/kmTextView"
@@ -24,4 +28,4 @@
         <requestFocus />
     </com.tavultesoft.kmea.KMTextView>
 
-</RelativeLayout>
+</LinearLayout>
