@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize the theme here -->
         <!-- colorPrimary is used for the default action bar background -->
         <item name="colorPrimary">@color/keyman_blue</item>
@@ -19,4 +20,13 @@
             backward-compatibility can go here.
         -->
     </style>
+    
+    <style name="AppTheme" parent="AppTheme.Base"/>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme"> <!--Theme.AppCompat"-->
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
 </resources>

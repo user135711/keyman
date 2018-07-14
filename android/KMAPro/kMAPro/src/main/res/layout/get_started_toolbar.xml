@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/get_started_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/keyman_blue">
-<!--    android:theme="@style/ThemeOverlay.AppCompat"-->
-<!-- This needs to be    android:background="?attr/colorPrimary" -->
+    android:background="?attr/colorPrimary"
+    app:theme="@style/AppTheme.Toolbar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
     <ImageView
         style="?android:attr/actionButtonStyle"
@@ -26,7 +27,7 @@
         android:text="@string/get_started"
         android:textSize="20sp"
         android:textStyle="bold" />
-
+<!--         android:textColor="@android:color/white" -->
     <ImageButton
         android:id="@+id/close_button"
         style="?android:attr/actionButtonStyle"
@@ -35,6 +36,6 @@
         android:layout_centerVertical="true"
         android:layout_gravity="right"
         android:contentDescription="@string/image_button"
-        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+        android:src="@drawable/ic_action_close" />
 
 </android.support.v7.widget.Toolbar>

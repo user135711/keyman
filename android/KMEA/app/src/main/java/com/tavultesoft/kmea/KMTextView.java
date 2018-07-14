@@ -61,12 +61,8 @@ public final class KMTextView extends AppCompatEditText {
     this.context = context;
     this.hardwareKeyboardInterpreter = new KMHardwareKeyboardInterpreter(context, KeyboardType.KEYBOARD_TYPE_INAPP);
 
-    AppCompatActivity activity;
-    if (context instanceof ContextThemeWrapper) {
-      activity = (AppCompatActivity)(((ContextThemeWrapper)context).getBaseContext());
-    } else {
-      activity = (AppCompatActivity)context;
-    }
+    AppCompatActivity activity = (AppCompatActivity)context;
+
     Window mainWindow = activity.getWindow();
     mainWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     FrameLayout mainLayout = (FrameLayout) mainWindow.getDecorView().findViewById(android.R.id.content);
@@ -167,12 +163,7 @@ public final class KMTextView extends AppCompatEditText {
 
   @Override
   public void onWindowFocusChanged(boolean hasWindowFocus) {
-    AppCompatActivity activity;
-    if (context instanceof ContextThemeWrapper) {
-      activity = (AppCompatActivity)(((ContextThemeWrapper)context).getBaseContext());
-    } else {
-      activity = (AppCompatActivity)context;
-    }
+    AppCompatActivity activity = (AppCompatActivity)context;
 
     Window mainWindow = activity.getWindow();
     if (hasWindowFocus) {
@@ -268,12 +259,7 @@ public final class KMTextView extends AppCompatEditText {
   }
 
   private void showKeyboard() {
-    AppCompatActivity activity;
-    if (context instanceof ContextThemeWrapper) {
-      activity = (AppCompatActivity)(((ContextThemeWrapper)context).getBaseContext());
-    } else {
-      activity = (AppCompatActivity)context;
-    }
+    AppCompatActivity activity = (AppCompatActivity)context;
 
     Window mainWindow = activity.getWindow();
     FrameLayout mainLayout = (FrameLayout) mainWindow.getDecorView().findViewById(android.R.id.content);

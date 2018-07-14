@@ -5,13 +5,17 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:theme="@style/AppTheme"
     tools:context=".MainActivity">
-<!-- this needs to be android:background="?attr/colorPrimary" -->
 
-    <include layout="@layout/activity_main_toolbar"
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main_toolbar"
+        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="?attr/colorPrimary" />
 
     <com.tavultesoft.kmea.KMTextView
         android:id="@+id/kmTextView"
