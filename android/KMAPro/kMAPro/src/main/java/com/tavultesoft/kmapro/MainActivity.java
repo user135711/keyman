@@ -160,12 +160,6 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
     getSupportActionBar().setLogo(R.drawable.keyman_logo);
     getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
-    /*
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-      toolbar.setBackground(getActionBarDrawable(this));
-    }
-    */
     textView = (KMTextView) findViewById(R.id.kmTextView);
     SharedPreferences prefs = getSharedPreferences(getString(R.string.kma_prefs_name), Context.MODE_PRIVATE);
     textView.setText(prefs.getString(userTextKey, ""));

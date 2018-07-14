@@ -20,7 +20,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -38,12 +38,17 @@ public class InfoActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     final Context context = this;
 
+    setContentView(R.layout.activity_info);
 
-    final ActionBar actionBar = getSupportActionBar();
-    actionBar.setLogo(R.drawable.keyman_logo);
-    actionBar.setDisplayShowTitleEnabled(false);
-    actionBar.setDisplayShowCustomEnabled(true);
-    actionBar.setBackgroundDrawable(MainActivity.getActionBarDrawable(this));
+    Toolbar toolbar = findViewById(R.id.info_toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
+    getSupportActionBar().setDisplayUseLogoEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
+    getSupportActionBar().setLogo(R.drawable.keyman_logo);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayShowCustomEnabled(true);
+
     TextView version = new TextView(this);
     version.setWidth((int) getResources().getDimension(R.dimen.version_label_width));
     version.setTextSize(getResources().getDimension(R.dimen.version_label_textsize));
@@ -58,9 +63,8 @@ public class InfoActivity extends AppCompatActivity {
       // Could not get version number
     }
     version.setText(ver);
-    actionBar.setCustomView(version);
+    getSupportActionBar().setCustomView(version);
 
-    setContentView(R.layout.activity_info);
 
     String currentKbID = KMManager.KMDefault_KeyboardID;
     HashMap<String, String> curKbInfo = KMManager.getCurrentKeyboardInfo(this);
