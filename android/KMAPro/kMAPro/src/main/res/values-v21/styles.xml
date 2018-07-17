@@ -6,16 +6,8 @@
         AppTheme from res/values/styles.xml on API 21+ devices.
     -->
     <!-- Application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- API 21 theme customizations can go here. -->
+    <style name="AppTheme" parent="AppTheme.Base">
 
-        <!-- colorPrimary is used for the default action bar background -->
-        <item name="colorPrimary">@color/keyman_blue</item>
-
-        <!-- colorPrimaryDark is used for the status bar -->
-        <item name="colorPrimaryDark">@color/keyman_dark_blue</item>
-
-        <item name="colorAccent">@color/keyman_orange</item>
     </style>
 
     <style name="AppTheme.Toolbar" parent="AppTheme"> <!--Theme.AppCompat"-->
