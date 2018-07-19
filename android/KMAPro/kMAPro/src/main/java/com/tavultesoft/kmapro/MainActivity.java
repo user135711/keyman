@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
     KMManager.initialize(getApplicationContext(), KeyboardType.KEYBOARD_TYPE_INAPP);
     setContentView(R.layout.activity_main);
 
-    toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+    toolbar = (Toolbar) findViewById(R.id.titlebar);
     setSupportActionBar(toolbar);
     getSupportActionBar().setTitle(null);
     getSupportActionBar().setDisplayUseLogoEnabled(true);
@@ -166,9 +166,6 @@ public class MainActivity extends AppCompatActivity implements OnKeyboardEventLi
     textSize = prefs.getInt(userTextSizeKey, minTextSize);
     textView.setTextSize((float) textSize);
     textView.setSelection(textView.getText().length());
-
-
-
 
     boolean didCheckUserData = prefs.getBoolean(MainActivity.didCheckUserDataKey, false);
     if (!didCheckUserData && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)) {
