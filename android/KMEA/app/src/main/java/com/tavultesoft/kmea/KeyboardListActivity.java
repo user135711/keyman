@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import com.tavultesoft.kmea.KeyboardEventHandler.OnKeyboardDownloadEventListener;
 
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +35,7 @@ import android.widget.Toast;
 // Public access is necessary to avoid IllegalAccessException
 public final class KeyboardListActivity extends AppCompatActivity implements OnKeyboardDownloadEventListener {
 
+  private static Toolbar toolbar = null;
   private static ListView listView = null;
   private static JSONArray languages = LanguageListActivity.languages();
   private static JSONArray keyboards = null;
@@ -44,17 +46,11 @@ public final class KeyboardListActivity extends AppCompatActivity implements OnK
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
     final Context context = this;
-    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-    try {
-      int titleContainerId = (Integer) Class.forName("com.android.internal.R$id").getField("title_container").get(null);
-      ((ViewGroup) getWindow().findViewById(titleContainerId)).removeAllViews();
-    } catch (Exception e) {
-      Log.e("KeyboardListActivity", "Error: " + e);
-    }
 
-    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.list_title_layout1);
-    setContentView(R.layout.list_layout);
+    setContentView(R.layout.activity_list_layout);
+    toolbar = (Toolbar) findViewById(R.id.list_toolbar);
     listView = (ListView) findViewById(R.id.listView);
 
     final ImageButton backButton = (ImageButton) findViewById(R.id.left_button);

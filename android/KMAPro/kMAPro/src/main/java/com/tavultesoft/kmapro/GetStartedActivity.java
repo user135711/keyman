@@ -45,22 +45,9 @@ public class GetStartedActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
     final Context context = this;
-    /*
-    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-    try {
-      int titleContainerId = (Integer) Class.forName("com.android.internal.R$id").getField("title_container").get(null);
-      ((ViewGroup) getWindow().findViewById(titleContainerId)).removeAllViews();
-    } catch (Exception e) {
-      Log.e("GetStartedActivity", e.getMessage());
-    }
-
-    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.get_started_title_layout);
-    */
     setContentView(R.layout.get_started_list_layout);
 
     Toolbar toolbar = (Toolbar) findViewById(R.id.get_started_toolbar);
-    //setSupportActionBar(toolbar);
-    //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     listView = (ListView) findViewById(R.id.listView);
 
