@@ -16,7 +16,7 @@
         <item name="colorPrimaryDark">@color/keyman_dark_blue</item>
 
         <item name="colorAccent">@color/keyman_orange</item>
-
+        <item name="android:textColorHint">@color/keyman_dark_blue</item>
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
