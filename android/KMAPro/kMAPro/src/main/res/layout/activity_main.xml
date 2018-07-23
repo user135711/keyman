@@ -3,65 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:layout_above="@+id/KMKeyboard"
     android:orientation="vertical"
-    android:background="@color/keyman_orange"
     tools:context=".MainActivity">
-
+<!--     android:background="@color/keyman_orange" -->
     <include layout="@layout/titlebar" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_gravity="center"
+        android:layout_height="0dp"
         android:layout_margin="10dp"
         card_view:cardCornerRadius="10dp"
         card_view:contentPadding="10dp">
 
-        <!--LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"-->
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <!--TextView
-                android:id="@+id/card_view_header"
+            <android.support.v7.widget.Toolbar
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_titlebar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:text="@string/textview_hint"
-                android:textColor="@color/keyman_dark_blue"
-                android:textSize="12sp" /-->
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/white"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
-        <ImageButton
-            android:id="@+id/overflow_button"
-            style="?android:borderlessButtonStyle"
-            android:layout_width="46dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="right"
-            android:contentDescription="@string/image_button"
-            android:src="@drawable/ic_light_action_overflow" />
+                <ImageButton
+                    android:id="@+id/overflow_button"
+                    style="?android:borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="right"
+                    android:contentDescription="@string/image_button"
+                    android:src="@drawable/ic_light_action_overflow" />
+
+            </android.support.v7.widget.Toolbar>
 
             <com.tavultesoft.kmea.KMTextView
                 android:id="@+id/kmTextView"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="?attr/actionBarSize"
                 android:background="@drawable/textview_bg"
                 android:ems="10"
                 android:gravity="top"
-                android:inputType="textMultiLine|textNoSuggestions"
                 android:hint="@string/textview_hint"
+                android:inputType="textMultiLine|textNoSuggestions"
                 android:scrollbars="vertical">
 
                 <requestFocus />
             </com.tavultesoft.kmea.KMTextView>
-        <!--/LinearLayout-->
+
+        </RelativeLayout>
 
     </android.support.v7.widget.CardView>
 
+    <!-- Add padding where in-app OSK will overlay. Otherwise, OSK will block the bottom of KMTextView -->
+    <!-- TODO: Determine height by OSK size -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="205dp"/>
 </LinearLayout>
