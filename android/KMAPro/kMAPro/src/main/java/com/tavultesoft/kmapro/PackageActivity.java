@@ -1,7 +1,7 @@
 package com.tavultesoft.kmapro;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AlertDialog;
 import android.content.Context;
@@ -34,6 +34,7 @@ import java.util.Map;
 
 public class PackageActivity extends AppCompatActivity {
 
+  private Toolbar toolbar;
   private WebView webView;
   private AlertDialog alertDialog;
   private File kmpFile;
@@ -45,6 +46,8 @@ public class PackageActivity extends AppCompatActivity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_package_installer);
+
     final Context context = this;
     Bundle bundle = getIntent().getExtras();
     if (bundle != null) {
@@ -62,12 +65,15 @@ public class PackageActivity extends AppCompatActivity {
       showErrorDialog(context, pkgId, message);
     }
 
-    final ActionBar actionBar = getSupportActionBar();
-    actionBar.setLogo(R.drawable.keyman_logo);
-    actionBar.setDisplayShowHomeEnabled(false);
-    actionBar.setDisplayShowTitleEnabled(false);
-    actionBar.setDisplayShowCustomEnabled(true);
-    actionBar.setBackgroundDrawable(MainActivity.getActionBarDrawable(this));
+    toolbar = (Toolbar) findViewById(R.id.titlebar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
+    getSupportActionBar().setDisplayUseLogoEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
+    getSupportActionBar().setLogo(R.drawable.keyman_logo);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayShowCustomEnabled(true);
+
     TextView packageActivityTitle = new TextView(this);
     packageActivityTitle.setWidth((int) getResources().getDimension(R.dimen.package_label_width));
     packageActivityTitle.setTextSize(getResources().getDimension(R.dimen.package_label_textsize));
@@ -75,9 +81,7 @@ public class PackageActivity extends AppCompatActivity {
 
     String titleStr = "Install Keyboard Package " + pkgVersion;
     packageActivityTitle.setText(titleStr);
-    actionBar.setCustomView(packageActivityTitle);
-
-    setContentView(R.layout.activity_package_installer);
+    getSupportActionBar().setCustomView(packageActivityTitle);
 
     final Button installButton = (Button) findViewById(R.id.installButton);
     final Button cancelButton = (Button) findViewById(R.id.cancelButton);
