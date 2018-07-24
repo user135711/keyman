@@ -38,7 +38,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 
 public class WebBrowserActivity extends AppCompatActivity {
@@ -58,19 +58,18 @@ public class WebBrowserActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     final Context context = this;
-    final ActionBar actionBar = getSupportActionBar();
-    actionBar.setLogo(null);
-    actionBar.setDisplayShowHomeEnabled(false);
-    actionBar.setDisplayShowTitleEnabled(false);
-    actionBar.setDisplayShowCustomEnabled(true);
-    actionBar.setBackgroundDrawable(MainActivity.getActionBarDrawable(this));
-    final ViewGroup webBarLayout = (ViewGroup) getLayoutInflater().inflate(
-      R.layout.web_browser_bar_layout,
-      null);
-    actionBar.setCustomView(webBarLayout);
+
     setContentView(R.layout.activity_web_browser);
+
+    final Toolbar toolbar = findViewById(R.id.web_browser_toolbar);
+
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
+    getSupportActionBar().setDisplayUseLogoEnabled(false);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+    getSupportActionBar().setDisplayShowCustomEnabled(true);
 
     webView = (WebView) findViewById(R.id.browserWebView);
     addressField = (EditText) findViewById(R.id.address_field);

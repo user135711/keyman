@@ -23,7 +23,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.support.design.widget.FloatingActionButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -32,7 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AlertDialog;
 import android.content.Context;
@@ -57,17 +57,16 @@ public class BookmarksActivity extends AppCompatActivity {
     final Context context = this;
     final String title = getIntent().getStringExtra(titleKey);
     final String url = getIntent().getStringExtra(urlKey);
-    final ActionBar actionBar = getSupportActionBar();
-    actionBar.setLogo(null);
-    actionBar.setDisplayShowHomeEnabled(false);
-    actionBar.setDisplayShowTitleEnabled(false);
-    actionBar.setDisplayShowCustomEnabled(true);
-    actionBar.setBackgroundDrawable(MainActivity.getActionBarDrawable(this));
-    final ViewGroup bookmarksTitleLayout = (ViewGroup) getLayoutInflater().inflate(
-      R.layout.bookmarks_title_layout,
-      null);
-    actionBar.setCustomView(bookmarksTitleLayout);
+
     setContentView(R.layout.bookmarks_list_layout);
+
+    final Toolbar toolbar = (Toolbar) findViewById(R.id.bookmarks_toolbar);
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setTitle(null);
+    getSupportActionBar().setDisplayUseLogoEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(false);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+
     listView = (ListView) findViewById(R.id.listView);
     list = getBookmarksList();
     String[] from = new String[]{titleKey, urlKey, iconKey};
@@ -112,7 +111,7 @@ public class BookmarksActivity extends AppCompatActivity {
     TextView emptyText = (TextView) findViewById(android.R.id.empty);
     listView.setEmptyView(emptyText);
 
-    ImageButton addButton = (ImageButton) findViewById(R.id.addButton);
+    FloatingActionButton  addButton = (FloatingActionButton) findViewById(R.id.addButton);
     addButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
