@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/bookmarks_title_layout" />
+    <include layout="@layout/titlebar" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/bookmarks_toolbar"
+        android:layout_below="@id/titlebar"
         android:background="@android:color/white" />
-    
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addButton"
+        style="?android:attr/actionButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/image_button"
+        android:layout_below="@id/listView"
+        android:src="@drawable/ic_content_add"
+        app:fabSize="normal"/>
+
     <TextView 
         android:id="@android:id/empty"
         android:layout_width="match_parent"
@@ -22,5 +34,6 @@
         android:gravity="center"
         android:text="@string/no_bookmarks"
         android:background="@android:color/white" />
+
 
 </LinearLayout>
