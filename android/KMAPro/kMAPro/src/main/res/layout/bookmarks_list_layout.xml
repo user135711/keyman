@@ -22,25 +22,5 @@
         android:gravity="center"
         android:text="@string/no_bookmarks"
         android:background="@android:color/white" />
-    
-    <!-- *android:layout_above="@+id/toolbar" in ListView
-    <LinearLayout
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="@android:color/background_light" >
 
-        <ImageButton
-            android:id="@+id/addButton"
-            style="?android:attr/actionButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/image_button"
-            android:src="@drawable/ic_content_add" />
-        
-    </LinearLayout>
-    -->
 </LinearLayout>
