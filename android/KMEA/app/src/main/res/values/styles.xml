@@ -7,7 +7,7 @@
         <!-- Customize the theme here -->
         <!-- colorPrimary is used for the default action bar background -->
         <!--item name="colorPrimary">@color/keyman_blue</item-->
-
+        <item name="android:textColor">@android:color/black</item>
         <!-- colorPrimaryDark is used for the status bar -->
         <!--item name="colorPrimaryDark">@color/keyman_orange</item-->
 
@@ -17,6 +17,11 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+    </style>
+
+    <style name="KMEAAppTheme.Toolbar" parent="KMEAAppTheme">
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="PopupAnim">
