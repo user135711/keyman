@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/keyboard_picker_toolbar"
-    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    app:theme="@style/KMEAAppTheme.Toolbar">
+    app:theme="@style/AppTheme.Toolbar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <ImageButton
         android:id="@+id/left_button"
@@ -22,8 +22,8 @@
         android:id="@+id/bar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:text="@string/title_keyboards"
         android:textSize="16sp"
         android:textStyle="bold" />
