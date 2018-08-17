@@ -62,19 +62,6 @@ public class BookmarksActivity extends AppCompatActivity {
     setContentView(R.layout.bookmarks_list_layout);
 
     final Toolbar toolbar = (Toolbar) findViewById(R.id.titlebar);
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setTitle(null);
-    getSupportActionBar().setDisplayUseLogoEnabled(false);
-    getSupportActionBar().setDisplayShowHomeEnabled(false);
-    getSupportActionBar().setDisplayShowTitleEnabled(false);
-    getSupportActionBar().setDisplayShowCustomEnabled(true);
-
-    TextView bookmarksTitle = new TextView(this);
-    bookmarksTitle.setWidth((int) getResources().getDimension(R.dimen.version_label_width));
-    bookmarksTitle.setTextSize(getResources().getDimension(R.dimen.bookmarks_label_textsize));
-    bookmarksTitle.setGravity(Gravity.CENTER_HORIZONTAL);
-    bookmarksTitle.setText(R.string.title_bookmarks);
-    getSupportActionBar().setCustomView(bookmarksTitle);
 
     listView = (ListView) findViewById(R.id.listView);
     list = getBookmarksList();

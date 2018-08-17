@@ -50,7 +50,7 @@ public class InfoActivity extends AppCompatActivity {
     getSupportActionBar().setDisplayShowCustomEnabled(true);
 
     TextView version = new TextView(this);
-    version.setWidth((int) getResources().getDimension(R.dimen.version_label_width));
+    version.setWidth((int) getResources().getDimension(R.dimen.label_width));
     version.setTextSize(getResources().getDimension(R.dimen.version_label_textsize));
     version.setGravity(Gravity.CENTER);
 

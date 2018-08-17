@@ -13,8 +13,6 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="3dp"
-        android:padding="4dp"
         android:layout_alignParentLeft="true"
         android:layout_above="@+id/progressBar"
         android:weightSum="2"
